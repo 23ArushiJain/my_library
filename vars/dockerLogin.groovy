@@ -1,5 +1,5 @@
- def call(String project, String hubUser) {
-    sh "docker image build -t ${hubUser}/${project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+ def call(Map config = [:]) {
+    sh "docker image build -t ${config.hubUser}/${config.project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
     withCredentials([usernamePassword(
             credentialsId: "doc",
             usernameVariable: "USER",
@@ -7,7 +7,7 @@
     )]) {
         sh "docker login -u '$USER' -p '$PASS'"
     }
-    sh "docker image push ${hubUser}/${project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+    sh "docker image push ${config.hubUser}/${config.project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 }
 }
 
