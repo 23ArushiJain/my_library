@@ -9,5 +9,5 @@
     }
     sh "docker image push ${config.hubUser}/${config.project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 }
-}
+
 
