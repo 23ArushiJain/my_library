@@ -10,4 +10,4 @@
     sh "docker image push ${hubUser}/${project}:beta-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 }
 }
-//sh 'docker login -u arushijain23 -p Arushi@23'
+
